@@ -73,30 +73,37 @@ export const useAuthStore = create((set, get) => ({
   },
 
   updateProfile: async (data) => {
-    set({ isUpdatingProfile: true });
-    try {
-      const res = await axiosInstance.put("/auth/update-profile", data);
-      set({ authUser: res.data });
-      // Show distinct success messages depending on what was updated
-      const updatedKeys = Object.keys(data || {});
-      if (updatedKeys.includes("profilePic") && updatedKeys.includes("fullName")) {
-        // show two separate toasts so user sees both updates
-        toast.success("Profile picture updated successfully");
-        toast.success("Name updated successfully");
-      } else if (updatedKeys.includes("profilePic")) {
-        toast.success("Profile picture updated successfully");
-      } else if (updatedKeys.includes("fullName")) {
-        toast.success("Name updated successfully");
-      } else {
-        toast.success("Profile updated successfully");
-      }
-    } catch (error) {
-      console.log("error in update profile:", error);
-      toast.error(error.response?.data?.message || "Could not update profile");
-    } finally {
-      set({ isUpdatingProfile: false });
+  set({ isUpdatingProfile: true });
+  try {
+    const currentUser = get().authUser;
+    const res = await axiosInstance.put("/auth/update-profile", data);
+    const updatedUser = res.data;
+
+    set({ authUser: updatedUser });
+    const nameChanged =
+      data.fullName &&
+      data.fullName.trim() !== "" &&
+      data.fullName !== currentUser.fullName;
+
+    const picChanged =
+      data.profilePic &&
+      data.profilePic.trim() !== "" &&
+      data.profilePic !== currentUser.profilePic;
+    
+    if (picChanged) {
+      toast.success("Profile picture updated successfully");
+    } 
+    else {
+      toast.success("Name changed successfully");
     }
-  },
+  } catch (error) {
+    console.error("Error in updateProfile:", error);
+    toast.error(error.response?.data?.message || "Could not update profile");
+  } finally {
+    set({ isUpdatingProfile: false });
+  }
+},
+
 
   connectSocket: () => {
     const { authUser } = get();
