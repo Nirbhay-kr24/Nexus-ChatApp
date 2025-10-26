@@ -53,7 +53,7 @@ const SignUpPage = () => {
           <div className="flex flex-col justify-center p-10">
             <div className="flex items-center gap-3 mb-6">
               <MessageSquare className="w-10 h-10 text-teal-600" />
-              <h1 className="text-4xl font-bold text-gray-800">Nexus</h1>
+              <h1 className="text-4xl font-bold text-gray-800">Nexus Chat</h1>
             </div>
 
             <h2 className="text-2xl font-semibold text-gray-800 mb-2">Create Your Account</h2>
