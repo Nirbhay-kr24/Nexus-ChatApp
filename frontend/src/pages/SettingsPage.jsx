@@ -56,7 +56,7 @@ const SettingsPage = () => {
   };
 
   return (
-    <div className="h-screen container mx-auto px-4 pt-20 max-w-7xl">
+    <div className="h-screen container mx-auto px-4 pt-15 max-w-7xl">
       {/* Back Button */}
       <div className="mb-6">
         <button
