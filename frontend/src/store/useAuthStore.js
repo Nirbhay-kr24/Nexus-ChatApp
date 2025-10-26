@@ -3,8 +3,6 @@ import { axiosInstance } from "../lib/axios.js";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 
-// Allow overriding backend host at build time with VITE_BACKEND_URL.
-// If VITE_BACKEND_URL is e.g. "https://api.example.com" the socket will connect there.
 const VITE_BACKEND = import.meta.env.VITE_BACKEND_URL;
 const isDev = import.meta.env.MODE === "development";
 const BASE_URL = isDev ? "http://localhost:5001" : VITE_BACKEND ? VITE_BACKEND : "/";
