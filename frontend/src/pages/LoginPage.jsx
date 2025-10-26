@@ -38,7 +38,7 @@ const LoginPage = () => {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <MessageSquare className="w-10 h-10 text-teal-600" />
-                <h1 className="text-4xl font-bold text-gray-800">Nexus</h1>
+                <h1 className="text-4xl font-bold text-gray-800">Nexus Chat</h1>
               </div>
               <h2 className="text-4xl font-bold text-gray-900">Welcome Back!</h2>
               <p className="text-gray-600 mt-2 text-lg">
