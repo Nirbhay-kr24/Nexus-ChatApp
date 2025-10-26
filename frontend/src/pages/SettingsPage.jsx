@@ -20,40 +20,38 @@ const SettingsPage = () => {
   const [isPhotoLoading, setIsPhotoLoading] = useState(false);
 
   const handleUpdateName = async (e) => {
-    e.preventDefault();
-    if (!fullName.trim()) return;
+  e.preventDefault();
+  if (!fullName.trim()) return;
 
-    setIsNameLoading(true);
-    try {
-      await updateProfile({ fullName: fullName.trim() });
-      toast.success("Profile updated!");
-    } catch (error) {
-      toast.error("Failed to update name");
-      console.error(error);
-    } finally {
-      setIsNameLoading(false);
-    }
-  };
+  setIsNameLoading(true);
+  try {
+    await updateProfile({ fullName: fullName.trim() });
+  } catch (error) {
+    toast.error("Failed to update name");
+    console.error(error);
+  } finally {
+    setIsNameLoading(false);
+  }
+};
 
   const handleUpdatePhoto = async (file) => {
-    if (!file) return;
+  if (!file) return;
 
-    setIsPhotoLoading(true);
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-      try {
-        const base64Image = e.target.result;
-        await updateProfile({ profilePic: base64Image });
-        toast.success("Profile picture updated!");
-      } catch (error) {
-        toast.error("Failed to update photo");
-        console.error(error);
-      } finally {
-        setIsPhotoLoading(false);
-      }
-    };
-    reader.readAsDataURL(file);
+  setIsPhotoLoading(true);
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    try {
+      const base64Image = e.target.result;
+      await updateProfile({ profilePic: base64Image });
+    } catch (error) {
+      toast.error("Failed to update photo");
+      console.error(error);
+    } finally {
+      setIsPhotoLoading(false);
+    }
   };
+  reader.readAsDataURL(file);
+};
 
   return (
     <div className="h-screen container mx-auto px-4 pt-15 max-w-7xl">
