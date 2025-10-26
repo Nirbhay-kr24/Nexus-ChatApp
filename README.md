@@ -135,15 +135,19 @@ nexus-chat-app/
    
    Open your browser and navigate to `http://localhost:5173` 
 
+
 ## 🛠️ Technologies Used
 
 ### Frontend
+
 - **React** - UI library
 - **Vite** - Build tool and dev server
 - **Tailwind CSS** - Utility-first CSS framework
 - **daisyUI** - Tailwind CSS component library
 - **Zustand** - State management
 - **React Router** - Navigation
+- **Axios** - HTTP client for API requests
+- **Socket.io Client** - Real-time bidirectional communication
 
 ### Backend
 - **Node.js** - Runtime environment
@@ -151,6 +155,7 @@ nexus-chat-app/
 - **MongoDB** - Database
 - **Socket.io** - Real-time communication
 - **JWT** - Authentication
+- **Bcrypt** - Password hashing and encryption
 
 ### APIs
 - **Google Gemini AI** - AI chat functionality
@@ -182,12 +187,13 @@ This application is deployed on **Render**.
 
 ### Deploying Your Own Instance
 
-1. On terminal type `npm run build`
-2. Create a new Web Service on Render
-3. Connect your GitHub repository
-4. Set the build command: `npm run build`
-5. Set the start command: `npm run start`
-6. Add environment variables in Render dashboard
+1. Build locally first with `npm run build` command in frontend terminal
+2. Then proceed with deployment on Render
+3. Create a new Web Service on Render
+4. Connect your GitHub repository
+5. Set the build command: `npm run build`
+6. Set the start command: `npm run start`
+7. Add environment variables in Render dashboard
 
 
 **Environment Variables to Set:**
